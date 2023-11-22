@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <include th:replace="views/frontend/components/metas :: metas"></include>
+    <!--form-rounded-->
+    <link rel="stylesheet" th:href="@{../../vendors/assets/stylerounded.css}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css}">
+    <!-- Admin LTE Theme style -->
+    <link rel="stylesheet" th:href="@{../../../vendors/dist/css/adminlte.min.css}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <a href="./index.html"><b>Login</b>Page</a>
+    </div>
+    <div class="card card-gray-dark card-outline">
+        <div class="card-body login-card-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+            <form th:action="@{/login}" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="username" autofocus placeholder="Email">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user-ninja"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" name="password" autofocus placeholder="Password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="icheck-primary">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">
+                                Remember Me
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <button type="submit" class="btn bg-lightblue btn-rounded"> Sign In</button>
+                    </div>
+                </div>
+            </form>
+            <p class="mb-0">
+                <a href="" class="text-center">Register a new membership</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script th:src="@{../../vendors/plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{../../vendors/plugins/bootstrap/js/bootstrap.bundle.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{../../vendors/assets/js/adminlte.min.js}"></script>
+</body>
+</html>

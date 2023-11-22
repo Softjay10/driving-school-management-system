@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+<head>
+    <include th:replace="views/backend/components/metas :: metas"></include>
+    <include th:replace="views/backend/components/styles :: styles"></include>
+
+    <!--app css-->
+    <link rel="stylesheet" th:href="@{../../../vendors/css/app.css}">
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- navbar -->
+    <include th:replace="views/backend/components/navbar :: navbar"></include>
+    <!-- sidebar -->
+    <include th:replace="views/backend/instructor/include/sidebar :: sidebar"></include>
+
+    <!-- content wrapper -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6 animated bounceInRight">
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Instructor</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Content Header (Page header) -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="card card-outline card-orange">
+                    <div class="card-header">
+                        <h5><i class="fa fa-plus"></i> Instructor Information</h5>
+                    </div>
+
+                    <form th:action="@{/create-instructor}" th:object="${instructors}" enctype="multipart/form-data" method="post">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="row">
+
+                                        <div class="form-group">
+                                            <!-- Add hidden form field to handle update -->
+                                            <input th:field="*{id}" type="hidden"  class="form-control" id="txtId"/>
+                                        </div>
+
+                                        <div class="col-md-12 text-center">
+                                            <div class="form-group">
+                                                <img th:src="${instructors.photosImagePath}" alt="Upload Picture" class="img-circle" height="100" width="100"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3 col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label>Instructor Name</label>
+                                                <div class="position-relative">
+                                                    <input type="text" th:field="*{instructorName}" class="form-control" placeholder="Instructor Name" required>
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3 col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label>Contact</label>
+                                                <div class="position-relative">
+                                                    <input type="number" th:field="*{contact}" class="form-control" placeholder="+63-9XXX-XXX-XXX" required>
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-phone"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3 col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label>Email</label>
+                                                <div class="position-relative">
+                                                    <input type="email" th:field="*{email}" class="form-control" placeholder="Email" required>
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-envelope"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3 col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label>Gender</label>
+                                                <div class="position-relative">
+
+                                                    <div class="form-check-inline">
+                                                        <input type="radio" th:field="*{gender}" class="form-check-input" value="Male" id="gMale">
+                                                        <label class="form-check-label" for="gMale">
+                                                            Male
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="radio" th:field="*{gender}" class="form-check-input" value="Female" id="gFemale">
+                                                        <label class="form-check-label" for="gFemale">
+                                                            Female
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-group"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label>Birth Date</label>
+                                                <div class="position-relative">
+                                                    <input type="date" th:field="*{birthDate}" class="form-control" placeholder="BirthDate" required>
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-calendar-day"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label>Address</label>
+                                                <div class="position-relative">
+                                                    <input type="text" th:field="*{address}" class="form-control" placeholder="Address" required>
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-address-book"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label>Driving Years Experience</label>
+                                                <div class="position-relative">
+                                                    <input type="number" th:field="*{drivingExperience}" class="form-control" placeholder="Enter year experience" required>
+                                                    <div class="form-control-icon">
+                                                        <i class="fa fa-calendar-check"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label>Account Status</label>
+                                                <div class="position-relative">
+                                                    <fieldset class="form-group">
+                                                        <select class="form-select form-control" name="accountStatus" required>
+                                                            <option>-SELECT-</option>
+                                                            <option value="Active">Active</option>
+                                                            <option value="Not Active">Not Active</option>
+                                                        </select>
+                                                        <div class="form-control-icon">
+                                                            <i class="fa fa-arrow-down"></i>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label for="inputFile">File Upload</label>
+                                                <input type="file" name="image" id="inputFile">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn bg-orange btn-rounded">
+                                <i class="fa fa-save"></i> Add
+                            </button>
+                            <a href="/instructors" class="btn btn-outline-danger btn-rounded">
+                                <i class="fa fa-times"></i> Close
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- end Main content -->
+
+
+    </div>
+    <!-- end content wrapper -->
+
+
+</div>
+<include th:replace="views/backend/components/scripts :: scripts"></include>
+
+
+</body>
+</html>
